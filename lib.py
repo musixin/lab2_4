@@ -30,17 +30,12 @@ def bubble_sort(numbers: list[int]) -> list[int]:
 # Возвращает список простых чисел < n
 # Пример: 11 -> [2, 3, 5, 7]
 def find_primes(n):
-    pre_primes = []
-    for i in range(n):
-        pre_primes.append(i)
-    pre_primes[1] = 0
-    for i in range(2, n):
-        if pre_primes[i]:
-            for j in range(2*i, n, i):
-                pre_primes[j] = 0
-    primes = []
-    for number in pre_primes:
-        if number:
-            primes.append(number)
-    return primes
-
+    if n < 2:
+        return []
+    sieve = [True] * (n + 1)
+    sieve[0], sieve[1] = False, False
+    for i in range(2, int(n ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n + 1, i):
+                sieve[j] = False
+    return [i for i, prime in enumerate(sieve) if prime]
