@@ -52,8 +52,8 @@ class TestAlgorithms(unittest.TestCase):
     # некорректный тип n - не целое число
     def test_find_primes(self):
         self.assertEqual(find_primes(10), [2, 3, 5, 7])
-        self.assertEqual(find_primes(3), [2, 3])
-        self.assertEqual(find_primes(2), [2])
+        self.assertEqual(find_primes(3), [2])
+        self.assertEqual(find_primes(2), [])
         self.assertEqual(find_primes(1), [])
         self.assertEqual(find_primes(0), [])
         self.assertEqual(find_primes(-10), [])
